@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6951e6b559f8141cdb6fbf87a1d462d2, type: 3}
+  m_Name: Hive 1
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 0}
+  Cost: 100
+  ModelPrefab: {fileID: 1006134850887874, guid: 50c60a14b6d074e44af569b0cab92fe9,
+    type: 2}
+  _beeCapacityUpgrades: {fileID: 11400000, guid: 982842e6770144322a549397c8e0e6d5,
+    type: 2}
+  _honeyCapacityUpgrades: {fileID: 11400000, guid: d8fdacee4384a47fb8a9e48d4fd9b45b,
+    type: 2}
+  _baseBeeCapacity: 1000
+  _honeyPerTick: 0

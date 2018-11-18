@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6726c09bb3e93411b82f7e4510b82b7f, type: 3}
+  m_Name: Honey sell price
+  m_EditorClassIdentifier: 
+  Persist: 1
+  StartingValue: 5
+  _cMultiplier: {fileID: 11400000, guid: aa5cd1e7ec6404e408b22aaf759cbcbf, type: 2}

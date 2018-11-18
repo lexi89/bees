@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f25ab227444480dbb4baaf639a8ff1, type: 3}
+  m_Name: Hives List
+  m_EditorClassIdentifier: 
+  List:
+  - {fileID: 11400000, guid: fc816a8232e45424ab7f4e7e2f71bd5c, type: 2}
+  - {fileID: 11400000, guid: b4ca53d58969e48f2a48bb4ff17a1182, type: 2}
