@@ -18,7 +18,6 @@ public class UIcontroller : MonoBehaviour
 	void Awake()
 	{
 		instance = this;
-		
 	}
 
 	void OnEnable()
@@ -36,8 +35,6 @@ public class UIcontroller : MonoBehaviour
 	void OnClicked(Selectable newTarget)
 	{
 		if(_activeUI!= null) _activeUI.SetActive(false);
-//		if(_currentTarget!=null) _currentTarget.Hide();
-//		_currentTarget = newTarget;
 	}
 
 	void OnItemUnlocked(UnlockableItem item)

@@ -8,8 +8,8 @@ public class BeeSpawner : MonoBehaviour
 	[SerializeField] GameObject _beePrefab;
 	[SerializeField] Transform _spawnPos;
 	[SerializeField] Transform _flyOutPoint;
-	[SerializeField] HivesManager _hivesManager;
-	List<Hive> _hives{ get{ return _hivesManager.Hives; } }
+	[SerializeField] HivesController _hivesController;
+	List<Hive> _hives{ get{ return _hivesController.Hives; } }
 	List<Hive> _availableHives{get{return _hives.Where(hive => hive.HasSpaceForNewBee).ToList();}}
 	// TODO: optimise. Don't need to make a new list everytime.
 	

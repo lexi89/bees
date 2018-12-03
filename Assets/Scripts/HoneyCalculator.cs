@@ -18,7 +18,7 @@ public class HoneyCalculator : MonoBehaviour
 	{
 		if (Time.time >= lastTick + _tickRate.Value)
 		{
-//			_hive.AddHoney(_hive.CurrentHiveBuilding.HoneyPerTick);
+			_hive.AddHoney(_hive.CurrentHiveBuilding.HoneyPerTick);
 			lastTick = Time.time;
 		}
 	}

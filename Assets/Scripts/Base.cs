@@ -10,12 +10,12 @@ public class Base : Moveable
 {
 	public Transform CollectionPoint;
 	[SerializeField] ListVar<HiveBuilding> _hiveBuildings;
-	[SerializeField] HivesManager _hiveManager;
+	[SerializeField] HivesController _hiveController;
 	[SerializeField] IntVar _honeyCount;
 	BaseData _state;
 	List<Collector> _collectors = new List<Collector>();
 	
-	public List<Hive> Hives{get{ return _hiveManager.Hives; }}
+	public List<Hive> Hives{get{ return _hiveController.Hives; }}
 	int collectorCapacity{
 		get{
 			int capacity = 0;
@@ -27,7 +27,7 @@ public class Base : Moveable
 		}
 	}
 	
-	int hiveCount{get{return _hiveManager.Hives.Count;}}
+	int hiveCount{get{return _hiveController.Hives.Count;}}
 	
 	void Awake()
 	{

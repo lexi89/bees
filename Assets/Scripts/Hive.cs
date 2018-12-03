@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using Bees;
-using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class Hive : MonoBehaviour
 {
-    public Action<Hive> OnHoneyAdded = delegate {  };
     public HiveState State{ get{ return _state; } }
-    public int BeeCount{ get{ return Mathf.FloorToInt(_state.BeeCount); } }
     public int CurrentLevelIndex{ get{ return _state.LevelIndex; } }
     public HiveBuilding CurrentHiveBuilding{ get; private set; }
     public bool HasSpaceForNewBee{get{ return CurrentLevelIndex >= 0 && _state.BeeCount + 1 <= CurrentHiveBuilding.BeeCapacity; }}
-    [ShowInInspector] float _honeyCount;
+    [SerializeField] FloatVar _honeyCount;
     [SerializeField] int _startingLevelIndex;
     [SerializeField] HivesList _hivesList;
     [SerializeField] HoneyCalculator _honeyCalculator;
     [SerializeField] NewBeeCalculator _beeCalculator;
     [SerializeField] AnimationSequence _pulseSequence;
-    HiveState _state = new HiveState(1);
+    [SerializeField] FloatVar _honeyValue;
+    [SerializeField] FloatVar _cash;
+    [SerializeField] bool _drawPoint;
+    [SerializeField][ReadOnly] HiveState _state;
     GameObject _currentModel;
     int _currentLevel;    
     float lastPulseTime;
@@ -39,7 +36,7 @@ public class Hive : MonoBehaviour
     {
         if (newLevelIndex >= 0)
         {
-            if (_currentModel != null) DestroyImmediate(_currentModel);
+            if (_currentModel != null) DestroyImmediate(_currentModel);            
             _state.LevelIndex = newLevelIndex;
             CurrentHiveBuilding = _hivesList.List[newLevelIndex];
             _currentModel = Instantiate(CurrentHiveBuilding.ModelPrefab, transform.position,Quaternion.identity);
@@ -55,7 +52,7 @@ public class Hive : MonoBehaviour
         }
     }
 
-    void OnNewHiveBuildingSelected(HiveBuilding _newHiveBuilding)
+    public void OnNewHiveBuildingSelected(HiveBuilding _newHiveBuilding)
     {
         LoadHiveLevel(_hivesList.List.IndexOf(_newHiveBuilding));
     }
@@ -81,7 +78,19 @@ public class Hive : MonoBehaviour
     
     public void AddHoney(float honeyToAdd)
     {
-        _honeyCount += honeyToAdd;
-        OnHoneyAdded(this);
+        _honeyCount.Add(honeyToAdd);
+        AddMoney(honeyToAdd);
+    }
+
+    void AddMoney(float honeyAmount)
+    {
+        _cash.Add(honeyAmount * _honeyValue.Value);
+    }
+
+    void OnDrawGizmos()
+    {
+        if (!_drawPoint) return;
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawCube(transform.position, Vector3.one);
     }
 }

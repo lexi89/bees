@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using Pixelplacement;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,23 +7,34 @@ public class Collector : MonoBehaviour
 {
 	public int Capacity{ get{ return Mathf.RoundToInt(_carryCapacity.Value); } }
 	[SerializeField] FloatVar _carryCapacity;
-	[ShowInInspector]int _holdingHoneyAmount;
+	[ShowInInspector] int _holdingHoneyAmount;
+	[SerializeField] Spline _spline;
+	[SerializeField] float _speed;
 	Animator _anim;
 	Hive _hive;
 	Base _base;
 	Transform _currentTarget;
-	NavMeshAgent _agent;
 	bool isGoingToHive;
 
 	void Awake()
 	{
-		_agent = GetComponent<NavMeshAgent>();
 		_anim = GetComponent<Animator>();
 	}
 
-	public void Init(Base newBase)
+	bool canWalk = true;
+	void Update()
 	{
-		_base = newBase;
+		if (Vector3.Distance(transform.position, _spline.followers[0].target.position) < 0.1f)
+		{
+			canWalk = false;
+		}
+		_spline.followers[0].percentage += _speed * Time.deltaTime;
+	}
+	
+	// continue here. coroutine for picking up honey and continuing.
+
+	public void Init()
+	{
 		GoToHive();
 	}
 
@@ -35,11 +47,8 @@ public class Collector : MonoBehaviour
 
 	void GoTo(Transform newTarget)
 	{
-//		print("going to " + newTarget.name);
 		_currentTarget = newTarget;
-		_agent.SetDestination(newTarget.position);
 		_anim.SetBool("IsWalking", true);
-		_agent.isStopped = false;
 	}
 
 	void Collect()
@@ -56,22 +65,5 @@ public class Collector : MonoBehaviour
 		_base.DepositHoney(_holdingHoneyAmount);
 		_holdingHoneyAmount = 0;
 		GoToHive();
-	}
-
-	void LateUpdate()
-	{
-		if (_agent.isStopped) return;
-		if(Vector3.Distance(transform.position, _currentTarget.position) < 0.4f)
-		{
-			_agent.isStopped = true;
-			if (isGoingToHive)
-			{
-				Collect();	
-			}
-			else
-			{
-				Deposit();
-			}
-		}
 	}
 }

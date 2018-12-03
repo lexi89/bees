@@ -20,4 +20,4 @@ MonoBehaviour:
   _honeyCapacityUpgrades: {fileID: 11400000, guid: d8fdacee4384a47fb8a9e48d4fd9b45b,
     type: 2}
   _baseBeeCapacity: 1000
-  _honeyPerTick: 0
+  _honeyPerTick: 10

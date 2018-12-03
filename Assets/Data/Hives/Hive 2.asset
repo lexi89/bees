@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Name: Hive 2
   m_EditorClassIdentifier: 
   Icon: {fileID: 0}
-  Cost: 0
+  Cost: 1000
   ModelPrefab: {fileID: 1903360574511296, guid: 7adc80221f1c9403b9c4d04e3a82a837,
     type: 2}
   _beeCapacityUpgrades: {fileID: 11400000, guid: 982842e6770144322a549397c8e0e6d5,
     type: 2}
   _honeyCapacityUpgrades: {fileID: 11400000, guid: d8fdacee4384a47fb8a9e48d4fd9b45b,
     type: 2}
-  _baseBeeCapacity: 0
-  _honeyPerTick: 0
+  _baseBeeCapacity: 10000
+  _honeyPerTick: 100

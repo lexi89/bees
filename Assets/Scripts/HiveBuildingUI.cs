@@ -24,8 +24,7 @@ public class HiveBuildingUI : MonoBehaviour
             return _cash.Value >= _hiveBuilding.Cost;
         }
     }
-
-
+    
     public void SetupUIForNewHive(HiveBuilding newHiveBuilding, HiveBuildingManager newManager)
     {
         _hiveBuilding = newHiveBuilding;

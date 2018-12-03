@@ -15,18 +15,6 @@ public class TouchCameraMovement : MonoBehaviour
 	
 	#endif
 
-	void Update()
-	{
-//		if (_isMoving)
-//		{
-//			transform.position = Vector3.Lerp(transform.position, TargetCamera.position, 0.2f);
-//			if (Vector3.Distance(transform.position, TargetCamera.position) < 0.1f)
-//			{
-//				_isMoving = false;
-//			}	
-//		}
-	}
-
 	
 	void LateUpdate()
 	{
